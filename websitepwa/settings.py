@@ -14,7 +14,6 @@ env = environ.Env(
 READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
 
 if READ_DOT_ENV_FILE:
-    # reading .env file
     environ.Env.read_env()
 
 # False if not in os.environ
