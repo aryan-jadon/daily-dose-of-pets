@@ -14,8 +14,8 @@ env = environ.Env(
 # environment variables condition
 READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
 
-# if READ_DOT_ENV_FILE:
-environ.Env.read_env()
+if READ_DOT_ENV_FILE:
+    environ.Env.read_env()
 
 # False if not in os.environ
 DEBUG = env('DEBUG')
