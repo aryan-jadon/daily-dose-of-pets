@@ -14,15 +14,16 @@ env = environ.Env(
 # environment variables condition
 READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
 
-if READ_DOT_ENV_FILE:
-    environ.Env.read_env()
+# if READ_DOT_ENV_FILE:
+environ.Env.read_env()
 
 # False if not in os.environ
 DEBUG = env('DEBUG')
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'daily-dose-of-pets-vbg7x.ondigitalocean.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                 'daily-dose-of-pets-vbg7x.ondigitalocean.app']
 
 # Application definition
 INSTALLED_APPS = [
@@ -146,14 +147,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SITE_ID = 1
 
-if not DEBUG:
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_HSTS_SECONDS = 31536000  # 1 year
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-    X_FRAME_OPTIONS = "DENY"
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
