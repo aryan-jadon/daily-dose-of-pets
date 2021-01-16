@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+{% load static %}
+{% load webpush_notifications %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Daily Dose of Pets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" property="og:description" content="entertaining funny pets videos app">
+    <meta name="keywords" content=" cat, dog, pets, animals,
+          cat games, dog games, pet games, animals games,
+          cat simulator, dog simulator, pet simulator, animal simulator,
+          cat videos, dog videos, pet videos, animal videos,
+          cat video game, dog video game, pet video game, animal video game,
+          cat ki video, dog ki video, pet ki video, animal ki video,
+          cat videos app, dog videos app, pet videos app, animal videos app,
+          cat videos wallpaper, dog videos wallpaper , pets videos wallpaper , animal videos wallpaper,
+          cat videos download, dog videos download, pets videos download, animal videos download,
+          cat videos tik tok, dog videos tik tok, pets videos tik tok, animal videos tik tok,
+          funny cat videos, funny dog videos, funny pet videos, funny animal videos,
+          cat fighting, dog fighting, pets fighting, animals fighting,
+          cat videos app download, dog videos app download, pets videos app download, animal videos app download,
+          cat videos for kids, dog videos for kids, pet videos for kids, animal videos for kids">
+
+    <meta property="og:url" content='{% url "index" %}' />
+    <meta property="og:title" content="Daily Dose of Pets" />
+
+    <meta property="og:image" content="{% static 'assets/pwa/icons/manifest-icon-512.png' %}" />
+    <meta property="og:image:alt" content="Daily Dose of Pets" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/theme.min.css' %}">
+    <link rel="manifest" href="{% static 'assets/pwa/manifest.json' %}">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="{% static 'assets/pwa/icons/apple-icon-180.png' %}">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2048-2732.jpg' %}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2732-2048.jpg' %}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1668-2388.jpg' %}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2388-1668.jpg' %}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1536-2048.jpg' %}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2048-1536.jpg' %}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1668-2224.jpg' %}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2224-1668.jpg' %}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1620-2160.jpg' %}" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2160-1620.jpg' %}" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1284-2778.jpg' %}" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2778-1284.jpg' %}" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1170-2532.jpg' %}" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2532-1170.jpg' %}" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1125-2436.jpg' %}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2436-1125.jpg' %}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1242-2688.jpg' %}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2688-1242.jpg' %}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-828-1792.jpg' %}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1792-828.jpg' %}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1242-2208.jpg' %}" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-2208-1242.jpg' %}" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-750-1334.jpg' %}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1334-750.jpg' %}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-640-1136.jpg' %}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="{% static 'assets/pwa/icons/apple-splash-1136-640.jpg' %}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+
+    <link rel="stylesheet" href="{% static 'assets/css/swiper.min.css' %}">
+    <script src="{% static 'assets/js/swiper.min.js' %}"></script>
+
+    {% webpush_header %}
+
+    <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+      background: #000;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    video{
+      position:relative;
+      width:100%;
+    }
+
+    img{
+        width: 100%;
+        height: auto;
+        position:relative;
+    }
+
+    .video-text{
+      position: absolute;
+      font-family: Helvetica;
+      background-color: #000;
+      max-width: 450px;
+      color: white;
+      display: inline;
+      bottom:0;
+      text-align: center;
+    }
+
+    .explore-icon{
+      position: absolute;
+      display: inline;
+      max-width: 450px;
+      bottom: 0;
+      text-align: center;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #000;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide embed-responsive embed-responsive-16by9">
+            <img src="https://cdn.jsdelivr.net/gh/content-buddy-app/app_screens/swipe_up.gif" alt="Swiipe Up">
+        </div>
+
+        <div class="swiper-slide embed-responsive embed-responsive-16by9">
+            <video poster={{ page_video.video_image|safe }} >
+                <source src={{ page_video.video_link|safe }} type='video/mp4'>
+            </video>
+             <p class="video-text embed-responsive">
+                    {{ page_video.video_text|safe }}
+             </p>
+        </div>
+
+         <div class="swiper-slide embed-responsive embed-responsive-16by9">
+            <video>
+                <source src="https://cdn.jsdelivr.net/gh/content-buddy-app/app_screens/end_screen.mp4" type='video/mp4'>
+            </video>
+
+            <button class="btn btn-success btn-pill explore-icon">
+                 <a href='{% url "index" %}'>
+                     Explore More Videos
+                 </a>
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="invisible">
+    {% webpush_button %}
+</div>
+
+<script>
+    var slides=document.querySelectorAll(".swiper-slide");
+    var myswiper=new Swiper(".swiper-container",{
+        pagination: '.swiper-pagination',
+        direction: 'vertical',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 30,
+        mousewheelControl: true,
+        loop:false,
+        autoplayDisableOnInteraction : false,
+        autoplayStopOnLast : true,
+        autoplay:1000,
+        onTransitionEnd:function(swiper){
+            var videos=document.querySelectorAll("video");
+            var currentSlide=document.querySelector(".swiper-slide-active");
+            var video=currentSlide.getElementsByTagName("video")[0];
+            if(video){
+                setTimeout(function(){
+                    myswiper.stopAutoplay()
+                },100)
+                onlyCurrentVideoPlay(videos,video)
+                startAutoplay(video)
+            }else{
+                onlyCurrentVideoPlay(videos)
+            }
+        }
+    })
+
+    function startAutoplay(video){
+        video.addEventListener("ended",function(){
+            myswiper.startAutoplay();
+        })
+        video.addEventListener("pause",function(){
+            myswiper.startAutoplay();
+        })
+    }
+
+    function onlyCurrentVideoPlay(videos,currentVideo){
+        Array.from(videos).forEach(function(val,ind){
+            val.currentTime=0;
+            val.pause();
+        })
+        if(currentVideo){
+            currentVideo.play()
+        }
+    }
+
+</script>
+
+{% include 'firebase.html' %}
+
+<script>
+    if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('{% url "service_worker.js" %}', { scope: '/' }).then(function(reg) {
+      console.log('Registration succeeded. Scope is ' + reg.scope);
+    }).catch(function(error) {
+      console.log('Registration failed with ' + error);
+    });
+    }
+</script>
+
+</body>
+</html>

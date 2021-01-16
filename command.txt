@@ -1,0 +1,6 @@
+To kill port -
+lsof -t -i tcp:8000 | xargs kill -9
+
+To make logos-
+https://cdn.jsdelivr.net/gh/content-buddy-app/app_screens/end_screen.mp4
+https://cdn.jsdelivr.net/gh/content-buddy-app/videos/1.mp4
