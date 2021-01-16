@@ -142,7 +142,6 @@
 
 <div class="swiper-container">
     <div class="swiper-wrapper">
-
         <div class="swiper-slide embed-responsive embed-responsive-16by9">
             <img src="https://cdn.jsdelivr.net/gh/content-buddy-app/app_screens/swipe_up.gif" alt="Swipe Up">
         </div>
@@ -206,7 +205,11 @@
     })
 
     myswiper.on('reachEnd', function(){
+    {% if page_videos.has_next %}
         window.location.href = '{% url "index" %}?page={{ page_videos.next_page_number }}';
+    {% else %}
+        window.location.href = '{% url "explore" %}';
+    {% endif %}
     })
 
     function startAutoplay(video){

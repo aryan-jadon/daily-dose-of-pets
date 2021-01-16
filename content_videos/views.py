@@ -6,10 +6,9 @@ import random
 
 def index_page(request):
     webpush = {"group": "users"}
-
     video_list = VideoEntry.objects.all()
-    page = request.GET.get('page', 1)
     paginator = Paginator(video_list, 3)
+    page = request.GET.get('page')
 
     try:
         page_videos = paginator.page(page)
@@ -20,6 +19,7 @@ def index_page(request):
 
     context = {
         "webpush": webpush,
+        'page': page,
         "page_videos": page_videos
     }
 
@@ -35,3 +35,7 @@ def shared_video(request, video):
     }
 
     return render(request, "website/shared_video.html", context)
+
+
+def explore_videos(request):
+    return render(request, "website/explore_videos.html")
