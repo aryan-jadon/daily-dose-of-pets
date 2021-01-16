@@ -3,6 +3,8 @@ from pathlib import Path
 import dj_database_url
 import environ
 
+SECURE_SSL_REDIRECT = False
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -126,6 +128,21 @@ WEBPUSH_SETTINGS = {
     "VAPID_PRIVATE_KEY": env('VAPID_PRIVATE_KEY'),
     "VAPID_ADMIN_EMAIL": env('VAPID_ADMIN_EMAIL')
 }
+
+# Cache time to live is 1 day.
+CACHE_TTL = 60 * 1440
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "today_videos"
+    }
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

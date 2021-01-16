@@ -1,13 +1,25 @@
+from django.conf import settings
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from content_videos.models import VideoEntry
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 import random
+
+
+CACHE_TTL = getattr(settings ,'CACHE_TTL' , DEFAULT_TIMEOUT)
 
 
 def index_page(request):
     webpush = {"group": "users"}
-    video_list = VideoEntry.objects.all()
-    paginator = Paginator(video_list, 3)
+    if not cache.get("todays_video_list"):
+        video_list = VideoEntry.objects.all()
+        cache.set("todays_video_list", video_list)
+
+    current_video_list = list(cache.get("todays_video_list"))
+    random.shuffle(current_video_list)
+    paginator = Paginator(current_video_list, 12)
     page = request.GET.get('page')
 
     try:
@@ -28,7 +40,12 @@ def index_page(request):
 
 def shared_video(request, video):
     webpush = {"group": "users"}
-    page_video = get_object_or_404(VideoEntry, slug=video)
+    if cache.get(video):
+        page_video = cache.get(video)
+    else:
+        page_video = get_object_or_404(VideoEntry, slug=video)
+        cache.set(video, page_video)
+
     context = {
         "webpush": webpush,
         'page_video': page_video
