@@ -26,7 +26,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = ['localhost',
                  '127.0.0.1',
-                 '139.59.12.203'] # IP of the server
+                 '139.59.39.74'] # IP of the server
 
 # Application definition
 INSTALLED_APPS = [
