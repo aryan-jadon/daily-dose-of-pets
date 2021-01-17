@@ -22,7 +22,7 @@ if READ_DOT_ENV_FILE:
 # False if not in os.environ
 DEBUG = env('DEBUG')
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = "mu(dj+sn6r=zrb--#^s#8+u^rw7)@^m8@2u0lek+#4t(t39og^"
 
 ALLOWED_HOSTS = ['localhost',
                  '127.0.0.1',
