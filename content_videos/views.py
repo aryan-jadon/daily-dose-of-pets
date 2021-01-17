@@ -10,7 +10,9 @@ import random
 
 CACHE_TTL = getattr(settings ,'CACHE_TTL' , DEFAULT_TIMEOUT)
 
-"""
+def index_page(request):
+    webpush = {"group": "users"}
+
     if not cache.get("todays_video_list"):
         video_list = VideoEntry.objects.all()
         cache.set("todays_video_list", video_list)
@@ -32,43 +34,17 @@ CACHE_TTL = getattr(settings ,'CACHE_TTL' , DEFAULT_TIMEOUT)
         'page': page,
         "page_videos": page_videos
     }
-    
-"""
-
-"""
-    if cache.get(video):
-        page_video = cache.get(video)
-    else:
-        page_video = get_object_or_404(VideoEntry, slug=video)
-        cache.set(video, page_video)
-        
-"""
-
-def index_page(request):
-    webpush = {"group": "users"}
-    video_list = VideoEntry.objects.all()
-    paginator = Paginator(video_list, 3)
-    page = request.GET.get('page')
-
-    try:
-        page_videos = paginator.page(page)
-    except PageNotAnInteger:
-        page_videos = paginator.page(1)
-    except EmptyPage:
-        page_videos = paginator.page(paginator.num_pages)
-
-    context = {
-        "webpush": webpush,
-        'page': page,
-        "page_videos": page_videos
-    }
 
     return render(request, 'website/index.html', context)
 
 
 def shared_video(request, video):
     webpush = {"group": "users"}
-    page_video = get_object_or_404(VideoEntry, slug=video)
+    if cache.get(video):
+        page_video = cache.get(video)
+    else:
+        page_video = get_object_or_404(VideoEntry, slug=video)
+        cache.set(video, page_video)
 
     context = {
         "webpush": webpush,

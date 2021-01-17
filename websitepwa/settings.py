@@ -26,7 +26,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = ['localhost',
                  '127.0.0.1',
-                 '*']
+                 '143.110.179.180'] # IP of the server
 
 # Application definition
 INSTALLED_APPS = [
@@ -130,9 +130,8 @@ WEBPUSH_SETTINGS = {
 }
 
 # Cache time to live is 1 day.
-# CACHE_TTL = 60 * 1440
+CACHE_TTL = 60 * 1440
 
-"""
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -143,7 +142,6 @@ CACHES = {
         "KEY_PREFIX": "today_videos"
     }
 }
-"""
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
