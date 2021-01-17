@@ -19,3 +19,8 @@ sudo apt install redis-server
 sudo -H pip3 install --upgrade pip
 sudo -H pip3 install virtualenv
 
+
+sudo vi /etc/systemd/system/gunicorn.socket
+
+sudo vi /etc/systemd/system/gunicorn.service
+

@@ -1,28 +1,16 @@
 import os
 from pathlib import Path
 import dj_database_url
-import environ
 
 SECURE_SSL_REDIRECT = False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-
-# environment variables condition
-READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
-
-if READ_DOT_ENV_FILE:
-    environ.Env.read_env()
-
 # False if not in os.environ
-DEBUG = env('DEBUG')
+DEBUG = os.getenv("DEBUG")
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 ALLOWED_HOSTS = ['localhost',
                  '127.0.0.1',
@@ -84,11 +72,11 @@ if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': env('DB_NAME'),
-            'USER': env('DB_USER'),
-            'PASSWORD': env('DB_PASSWORD'),
-            'HOST': env('DB_HOST'),
-            'PORT': env('DB_PORT')
+            'NAME': os.getenv("DB_NAME"),
+            'USER': os.getenv("DB_USER"),
+            'PASSWORD': os.getenv("DB_PASSWORD"),
+            'HOST': os.getenv("DB_HOST"),
+            'PORT': os.getenv("DB_PORT"),
         }
     }
 else:
@@ -96,11 +84,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': env('DB_NAME'),
-            'USER': env('DB_USER'),
-            'PASSWORD': env('DB_PASSWORD'),
-            'HOST': env('DB_HOST'),
-            'PORT': env('DB_PORT')
+             'NAME': os.getenv("DB_NAME"),
+            'USER': os.getenv("DB_USER"),
+            'PASSWORD': os.getenv("DB_PASSWORD"),
+            'HOST': os.getenv("DB_HOST"),
+            'PORT': os.getenv("DB_PORT"),
         }
     }
 
@@ -124,9 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 WEBPUSH_SETTINGS = {
-    "VAPID_PUBLIC_KEY": env('VAPID_PUBLIC_KEY'),
-    "VAPID_PRIVATE_KEY": env('VAPID_PRIVATE_KEY'),
-    "VAPID_ADMIN_EMAIL": env('VAPID_ADMIN_EMAIL')
+    "VAPID_PUBLIC_KEY": os.getenv("VAPID_PUBLIC_KEY"),
+    "VAPID_PRIVATE_KEY": os.getenv("VAPID_PRIVATE_KEY"),
+    "VAPID_ADMIN_EMAIL": os.getenv("VAPID_ADMIN_EMAIL"),
 }
 
 # Cache time to live is 1 day.
