@@ -5,9 +5,17 @@ To make logos-
 https://cdn.jsdelivr.net/gh/content-buddy-app/app_screens/end_screen.mp4
 https://cdn.jsdelivr.net/gh/content-buddy-app/videos/1.mp4
 
-/root/myprojectdir
-
-sudo vi /etc/systemd/system/gunicorn.socket
 
 
-sudo vi /etc/systemd/system/gunicorn.service
+
+adduser shubham
+usermod -aG sudo shubham
+
+sudo apt update
+sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
+sudo apt install redis-server
+
+
+sudo -H pip3 install --upgrade pip
+sudo -H pip3 install virtualenv
+
